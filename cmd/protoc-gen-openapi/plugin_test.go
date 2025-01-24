@@ -163,9 +163,10 @@ func TestOpenAPIFQSchemaNaming(t *testing.T) {
 				}
 			} else {
 				// Verify that the generated spec matches our expected version.
-				err = exec.Command("diff", TEMP_FILE, fixture).Run()
+				cmd := exec.Command("diff", TEMP_FILE, fixture)
+				output, err := cmd.CombinedOutput()
 				if err != nil {
-					t.Fatalf("Diff failed: %+v", err)
+					t.Fatalf("Diff %s vs %s failed: %s, %+v", TEMP_FILE, fixture, string(output), err)
 				}
 				// Verify that the generated spec matches the source_relative version
 				sourceRelativeFile := strings.TrimSuffix(tt.protofile, filepath.Ext(tt.protofile)) + ".openapi.yaml"

@@ -3,7 +3,7 @@
 
 openapi: 3.0.3
 info:
-    title: Messaging API
+    title: tests.protobuftypes.message.v1.Messaging API
     version: 0.0.1
 servers:
     - url: https://foo.googleapi.com
@@ -11,7 +11,7 @@ paths:
     /v1/messages:
         get:
             tags:
-                - Messaging
+                - tests.protobuftypes.message.v1.Messaging
             operationId: Messaging_ListMessages
             responses:
                 "200":
@@ -29,7 +29,7 @@ paths:
     /v1/messages/{messageId}:
         get:
             tags:
-                - Messaging
+                - tests.protobuftypes.message.v1.Messaging
             operationId: Messaging_GetMessage
             parameters:
                 - name: messageId
@@ -165,7 +165,7 @@ paths:
                                 $ref: '#/components/schemas/google.rpc.Status'
         post:
             tags:
-                - Messaging
+                - tests.protobuftypes.message.v1.Messaging
             operationId: Messaging_CreateMessage
             parameters:
                 - name: messageId
@@ -194,7 +194,7 @@ paths:
                                 $ref: '#/components/schemas/google.rpc.Status'
         patch:
             tags:
-                - Messaging
+                - tests.protobuftypes.message.v1.Messaging
             operationId: Messaging_UpdateMessage
             parameters:
                 - name: messageId
@@ -337,7 +337,7 @@ paths:
     /v1/messages:csv:
         get:
             tags:
-                - Messaging
+                - tests.protobuftypes.message.v1.Messaging
             description: |-
                 OpenAPI does not allow requestBody in GET operations.
                  But it should not convert it to query params either.
@@ -355,7 +355,7 @@ paths:
                                 $ref: '#/components/schemas/google.rpc.Status'
         post:
             tags:
-                - Messaging
+                - tests.protobuftypes.message.v1.Messaging
             operationId: Messaging_CreateMessagesFromCSV
             requestBody:
                 content:
@@ -514,4 +514,4 @@ components:
                         type: integer
                         format: int32
 tags:
-    - name: Messaging
+    - name: tests.protobuftypes.message.v1.Messaging

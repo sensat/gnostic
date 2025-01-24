@@ -23,9 +23,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/golang/protobuf/proto"
-
 	"github.com/google/gnostic/printer"
+	"google.golang.org/protobuf/proto"
 
 	pb "github.com/google/gnostic/openapiv2"
 )

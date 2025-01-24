@@ -3,13 +3,13 @@
 
 openapi: 3.0.3
 info:
-    title: Messaging API
+    title: tests.bodymappying.message.v1.Messaging API
     version: 0.0.1
 paths:
     /v1/messages/{messageId}:
         patch:
             tags:
-                - Messaging
+                - tests.bodymappying.message.v1.Messaging
             operationId: Messaging_UpdateMessage
             parameters:
                 - name: messageId
@@ -70,4 +70,4 @@ components:
                 text:
                     type: string
 tags:
-    - name: Messaging
+    - name: tests.bodymappying.message.v1.Messaging

@@ -20,12 +20,11 @@ import (
 	"os/exec"
 	"testing"
 
-	"github.com/golang/protobuf/jsonpb"
-
 	discovery "github.com/google/gnostic/discovery"
 	metrics "github.com/google/gnostic/metrics"
 	openapiv2 "github.com/google/gnostic/openapiv2"
 	openapiv3 "github.com/google/gnostic/openapiv3"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 func fillTestProtoStructure(words []string, count []int) []*metrics.WordCount {
@@ -242,7 +241,7 @@ func TestSampleVocabularyV2(t *testing.T) {
 		t.FailNow()
 	}
 	reference := metrics.Vocabulary{}
-	jsonpb.UnmarshalString(string(referenceData), &reference)
+	protojson.Unmarshal(referenceData, &reference)
 	testVocabulary(t,
 		v1,
 		&reference,
@@ -271,7 +270,7 @@ func TestSampleVocabularyV3(t *testing.T) {
 		t.FailNow()
 	}
 	reference := metrics.Vocabulary{}
-	jsonpb.UnmarshalString(string(referenceData), &reference)
+	protojson.Unmarshal(referenceData, &reference)
 	testVocabulary(t,
 		v1,
 		&reference,
@@ -300,7 +299,7 @@ func TestSampleVocabularyDiscovery(t *testing.T) {
 		t.FailNow()
 	}
 	reference := metrics.Vocabulary{}
-	jsonpb.UnmarshalString(string(referenceData), &reference)
+	protojson.Unmarshal(referenceData, &reference)
 	testVocabulary(t,
 		v1,
 		&reference,

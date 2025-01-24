@@ -20,7 +20,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 )
 
 func usage() string {

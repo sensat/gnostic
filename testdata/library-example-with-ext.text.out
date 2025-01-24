@@ -1,249 +1,249 @@
 swagger: "2.0"
-info: <
+info: {
   title: "Google Example Library API"
   version: "v1"
   description: "A simple Google Example Library API."
->
+}
 host: "library-example.googleapis.com"
-paths: <
-  path: <
+paths: {
+  path: {
     name: "/v1/{sharedParameter}/pets"
-    value: <
-      post: <
+    value: {
+      post: {
         operation_id: "simpleMethod"
-        parameters: <
-          parameter: <
-            body_parameter: <
+        parameters: {
+          parameter: {
+            body_parameter: {
               name: "myBodyRef"
               in: "body"
-              schema: <
-                properties: <
-                  additional_properties: <
+              schema: {
+                properties: {
+                  additional_properties: {
                     name: "myStringA"
-                    value: <
-                      type: <
+                    value: {
+                      type: {
                         value: "string"
-                      >
-                    >
-                  >
-                >
-              >
-            >
-          >
-        >
-        parameters: <
-          parameter: <
-            non_body_parameter: <
-              query_parameter_sub_schema: <
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        parameters: {
+          parameter: {
+            non_body_parameter: {
+              query_parameter_sub_schema: {
                 required: true
                 in: "query"
                 description: "New description"
                 name: "paramToOverride"
                 type: "string"
-              >
-            >
-          >
-        >
-        parameters: <
-          parameter: <
-            non_body_parameter: <
-              query_parameter_sub_schema: <
+              }
+            }
+          }
+        }
+        parameters: {
+          parameter: {
+            non_body_parameter: {
+              query_parameter_sub_schema: {
                 required: true
                 in: "query"
                 description: "test"
                 name: "paramAtSwaggerScope"
                 type: "integer"
                 format: "int32"
-              >
-            >
-          >
-        >
-        responses: <
-          response_code: <
+              }
+            }
+          }
+        }
+        responses: {
+          response_code: {
             name: "default"
-            value: <
-              response: <
+            value: {
+              response: {
                 description: "successful operation"
-                schema: <
-                  schema: <
-                    properties: <
-                      additional_properties: <
+                schema: {
+                  schema: {
+                    properties: {
+                      additional_properties: {
                         name: "myStringA"
-                        value: <
-                          type: <
+                        value: {
+                          type: {
                             value: "string"
-                          >
-                        >
-                      >
-                    >
-                  >
-                >
-              >
-            >
-          >
-        >
-      >
-      parameters: <
-        parameter: <
-          non_body_parameter: <
-            path_parameter_sub_schema: <
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      parameters: {
+        parameter: {
+          non_body_parameter: {
+            path_parameter_sub_schema: {
               required: true
               in: "path"
               description: "Shared parameter"
               name: "sharedParameter"
               type: "string"
-            >
-          >
-        >
-      >
-      parameters: <
-        parameter: <
-          non_body_parameter: <
-            query_parameter_sub_schema: <
+            }
+          }
+        }
+      }
+      parameters: {
+        parameter: {
+          non_body_parameter: {
+            query_parameter_sub_schema: {
               required: true
               in: "query"
               description: "Description to override"
               name: "paramToOverride"
               type: "string"
-            >
-          >
-        >
-      >
-    >
-  >
->
-definitions: <
-  additional_properties: <
+            }
+          }
+        }
+      }
+    }
+  }
+}
+definitions: {
+  additional_properties: {
     name: "SimpleDef"
-    value: <
-      properties: <
-        additional_properties: <
+    value: {
+      properties: {
+        additional_properties: {
           name: "myStringA"
-          value: <
-            type: <
+          value: {
+            type: {
               value: "string"
-            >
-          >
-        >
-      >
-    >
-  >
-  additional_properties: <
+            }
+          }
+        }
+      }
+    }
+  }
+  additional_properties: {
     name: "SimpleDefWithBoolean"
-    value: <
-      properties: <
-        additional_properties: <
+    value: {
+      properties: {
+        additional_properties: {
           name: "active"
-          value: <
-            type: <
+          value: {
+            type: {
               value: "boolean"
-            >
-          >
-        >
-      >
-    >
-  >
->
-parameters: <
-  additional_properties: <
+            }
+          }
+        }
+      }
+    }
+  }
+}
+parameters: {
+  additional_properties: {
     name: "paramAtSwaggerScope"
-    value: <
-      non_body_parameter: <
-        query_parameter_sub_schema: <
+    value: {
+      non_body_parameter: {
+        query_parameter_sub_schema: {
           required: true
           in: "query"
           description: "test"
           name: "paramAtSwaggerScope"
           type: "integer"
           format: "int32"
-        >
-      >
-    >
-  >
->
-vendor_extension: <
+        }
+      }
+    }
+  }
+}
+vendor_extension: {
   name: "x-sampleone-book"
-  value: <
-    value: <
+  value: {
+    value: {
       type_url: "type.googleapis.com/sampleone.Book"
-      value: "\010{\020\347\007"
-    >
+      value: "\x08{\x10\xe7\x07"
+    }
     yaml: "code: 123\nmessage: 999\n"
-  >
->
-vendor_extension: <
+  }
+}
+vendor_extension: {
   name: "x-sampleone-shelf"
-  value: <
-    value: <
+  value: {
+    value: {
       type_url: "type.googleapis.com/sampleone.Shelf"
-      value: "\010{\020\347\007"
-    >
+      value: "\x08{\x10\xe7\x07"
+    }
     yaml: "foo1: 123\nbar: 999\n"
-  >
->
-vendor_extension: <
+  }
+}
+vendor_extension: {
   name: "x-sampleone-mysimplestring"
-  value: <
-    value: <
+  value: {
+    value: {
       type_url: "type.googleapis.com/google.protobuf.StringValue"
-      value: "\n\013hello world"
-    >
+      value: "\n\x0bhello world"
+    }
     yaml: "hello world\n"
-  >
->
-vendor_extension: <
+  }
+}
+vendor_extension: {
   name: "x-sampleone-mysimpleint64"
-  value: <
-    value: <
+  value: {
+    value: {
       type_url: "type.googleapis.com/google.protobuf.Int64Value"
-      value: "\010\271`"
-    >
+      value: "\x08\xb9`"
+    }
     yaml: "12345\n"
-  >
->
-vendor_extension: <
+  }
+}
+vendor_extension: {
   name: "x-sampleone-mysimplenumber"
-  value: <
-    value: <
+  value: {
+    value: {
       type_url: "type.googleapis.com/google.protobuf.DoubleValue"
-      value: "\t\221\355|?5\316[@"
-    >
+      value: "\t\x91\xed|?5\xce[@"
+    }
     yaml: "111.222\n"
-  >
->
-vendor_extension: <
+  }
+}
+vendor_extension: {
   name: "x-sampleone-mysimpleboolean"
-  value: <
-    value: <
+  value: {
+    value: {
       type_url: "type.googleapis.com/google.protobuf.BoolValue"
-      value: "\010\001"
-    >
+      value: "\x08\x01"
+    }
     yaml: "true\n"
-  >
->
-vendor_extension: <
+  }
+}
+vendor_extension: {
   name: "x-sampletwo-book"
-  value: <
-    value: <
+  value: {
+    value: {
       type_url: "type.googleapis.com/sampletwo.Book"
-      value: "\010{\020\347\007"
-    >
+      value: "\x08{\x10\xe7\x07"
+    }
     yaml: "code: 123\nmessage: 999\n"
-  >
->
-vendor_extension: <
+  }
+}
+vendor_extension: {
   name: "x-sampletwo-shelf"
-  value: <
-    value: <
+  value: {
+    value: {
       type_url: "type.googleapis.com/sampletwo.Shelf"
-      value: "\010{\020\347\007"
-    >
+      value: "\x08{\x10\xe7\x07"
+    }
     yaml: "foo1: 123\nbar: 999\n"
-  >
->
-vendor_extension: <
+  }
+}
+vendor_extension: {
   name: "x-unhandled"
-  value: <
+  value: {
     yaml: "code: 123\nmessage: 999\n"
-  >
->
+  }
+}

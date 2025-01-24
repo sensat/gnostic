@@ -22,7 +22,7 @@ import (
 	"strings"
 
 	"github.com/docopt/docopt-go"
-	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 
 	"github.com/google/gnostic/conversions"
 	discovery "github.com/google/gnostic/discovery"

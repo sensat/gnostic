@@ -28,7 +28,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/encoding/prototext"
+	"google.golang.org/protobuf/proto"
 	"gopkg.in/yaml.v3"
 
 	"github.com/google/gnostic/compiler"
@@ -508,7 +509,7 @@ func (g *Gnostic) writeBinaryOutput(message proto.Message) error {
 
 // Write a text pb representation.
 func (g *Gnostic) writeTextOutput(message proto.Message) {
-	bytes := []byte(proto.MarshalTextString(message))
+	bytes := []byte(prototext.MarshalOptions{Multiline: true}.Format(message))
 	writeFile(g.textOutputPath, bytes, g.sourceName, "text")
 }
 

@@ -3,7 +3,7 @@
 
 openapi: 3.0.3
 info:
-    title: LibraryService API
+    title: google.example.library.v1.LibraryService API
     description: |-
         This API represents a simple digital library.  It lets you manage Shelf
          resources and Book resources in the library. It defines the following
@@ -21,7 +21,7 @@ paths:
     /v1/shelves:
         get:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: |-
                 Lists shelves. The order is unspecified but deterministic. Newly created
                  shelves will not necessarily be added to the end of this list.
@@ -59,7 +59,7 @@ paths:
                                 $ref: '#/components/schemas/google.rpc.Status'
         post:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: Creates a shelf, and returns the new Shelf.
             operationId: LibraryService_CreateShelf
             requestBody:
@@ -84,7 +84,7 @@ paths:
     /v1/shelves/{shelf}:
         get:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: Gets a shelf. Returns NOT_FOUND if the shelf does not exist.
             operationId: LibraryService_GetShelf
             parameters:
@@ -109,7 +109,7 @@ paths:
                                 $ref: '#/components/schemas/google.rpc.Status'
         delete:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: Deletes a shelf. Returns NOT_FOUND if the shelf does not exist.
             operationId: LibraryService_DeleteShelf
             parameters:
@@ -132,7 +132,7 @@ paths:
     /v1/shelves/{shelf}/books:
         get:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: |-
                 Lists books in a shelf. The order is unspecified but deterministic. Newly
                  created books will not necessarily be added to the end of this list.
@@ -177,7 +177,7 @@ paths:
                                 $ref: '#/components/schemas/google.rpc.Status'
         post:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: Creates a book, and returns the new Book.
             operationId: LibraryService_CreateBook
             parameters:
@@ -209,7 +209,7 @@ paths:
     /v1/shelves/{shelf}/books/{book}:
         get:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: Gets a book. Returns NOT_FOUND if the book does not exist.
             operationId: LibraryService_GetBook
             parameters:
@@ -240,7 +240,7 @@ paths:
                                 $ref: '#/components/schemas/google.rpc.Status'
         put:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: |-
                 Updates a book. Returns INVALID_ARGUMENT if the name of the book
                  is non-empty and does not equal the existing name.
@@ -284,7 +284,7 @@ paths:
                                 $ref: '#/components/schemas/google.rpc.Status'
         delete:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: Deletes a book. Returns NOT_FOUND if the book does not exist.
             operationId: LibraryService_DeleteBook
             parameters:
@@ -313,7 +313,7 @@ paths:
     /v1/shelves/{shelf}/books/{book}:move:
         post:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: |-
                 Moves a book to another shelf, and returns the new book. The book
                  id of the new book may not be the same as the original book.
@@ -353,7 +353,7 @@ paths:
     /v1/shelves/{shelf}:merge:
         post:
             tags:
-                - LibraryService
+                - google.example.library.v1.LibraryService
             description: |-
                 Merges two shelves by adding all books from the shelf named
                  `other_shelf_name` to shelf `name`, and deletes
@@ -546,4 +546,4 @@ components:
                     description: A list of messages that carry the error details.  There is a common set of message types for APIs to use.
             description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
 tags:
-    - name: LibraryService
+    - name: google.example.library.v1.LibraryService

@@ -3,13 +3,13 @@
 
 openapi: 3.0.3
 info:
-    title: Messaging1 API
+    title: tests.noannotations.message.v1.Messaging1 API
     version: 0.0.1
 paths:
     /v1/messages/{message_id}:
         patch:
             tags:
-                - Messaging1
+                - tests.noannotations.message.v1.Messaging1
             operationId: Messaging1_UpdateMessage
             parameters:
                 - name: message_id
@@ -70,4 +70,4 @@ components:
                 label:
                     type: string
 tags:
-    - name: Messaging1
+    - name: tests.noannotations.message.v1.Messaging1

@@ -16,11 +16,12 @@
 //
 // It scans an API description and evaluates properties
 // that influence the ease and quality of code generation.
-//  - The number of HTTP operations of each method (GET, POST, etc).
-//  - The number of HTTP operations with no OperationId value.
-//  - The parameter types used and their frequencies.
-//  - The response types used and their frequencies.
-//  - The types used in definition objects and arrays and their frequencies.
+//   - The number of HTTP operations of each method (GET, POST, etc).
+//   - The number of HTTP operations with no OperationId value.
+//   - The parameter types used and their frequencies.
+//   - The response types used and their frequencies.
+//   - The types used in definition objects and arrays and their frequencies.
+//
 // Results are returned in a JSON structure.
 package main
 
@@ -31,8 +32,7 @@ import (
 	"strings"
 
 	"github.com/google/gnostic/plugins/gnostic-analyze/statistics"
-
-	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 
 	openapiv2 "github.com/google/gnostic/openapiv2"
 	openapiv3 "github.com/google/gnostic/openapiv3"

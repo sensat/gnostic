@@ -3,14 +3,14 @@
 
 openapi: 3.0.3
 info:
-    title: Messaging API
+    title: tests.enumoptions.message.v1.Messaging API
     description: Messaging service
     version: 0.0.1
 paths:
     /v1/messages/{message_id}:
         post:
             tags:
-                - Messaging
+                - tests.enumoptions.message.v1.Messaging
             operationId: Messaging_CreateMessage
             parameters:
                 - name: message_id
@@ -73,4 +73,4 @@ components:
                     type: integer
                     format: enum
 tags:
-    - name: Messaging
+    - name: tests.enumoptions.message.v1.Messaging

@@ -19,7 +19,7 @@ import (
 	"encoding/json"
 	"path/filepath"
 
-	"github.com/golang/protobuf/proto"
+	"google.golang.org/protobuf/proto"
 
 	metrics "github.com/google/gnostic/metrics"
 	openapiv2 "github.com/google/gnostic/openapiv2"

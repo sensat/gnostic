@@ -1,268 +1,268 @@
 openapi: "3.0"
-info: <
+info: {
   title: "OpenAPI Petstore"
-  license: <
+  license: {
     name: "MIT"
-  >
+  }
   version: "1.0.0"
->
-servers: <
+}
+servers: {
   url: "https://petstore.openapis.org/v1"
   description: "Development server"
->
-paths: <
-  path: <
+}
+paths: {
+  path: {
     name: "/pets"
-    value: <
-      get: <
+    value: {
+      get: {
         tags: "pets"
         summary: "List all pets"
         operation_id: "listPets"
-        parameters: <
-          parameter: <
+        parameters: {
+          parameter: {
             name: "limit"
             in: "query"
             description: "How many items to return at one time (max 100)"
-            schema: <
-              schema: <
+            schema: {
+              schema: {
                 type: "integer"
                 format: "int32"
-              >
-            >
-          >
-        >
-        responses: <
-          default: <
-            response: <
+              }
+            }
+          }
+        }
+        responses: {
+          default: {
+            response: {
               description: "unexpected error"
-              content: <
-                additional_properties: <
+              content: {
+                additional_properties: {
                   name: "application/json"
-                  value: <
-                    schema: <
-                      reference: <
+                  value: {
+                    schema: {
+                      reference: {
                         _ref: "#/components/schemas/Error"
-                      >
-                    >
-                  >
-                >
-              >
-            >
-          >
-          response_or_reference: <
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          response_or_reference: {
             name: "200"
-            value: <
-              response: <
+            value: {
+              response: {
                 description: "An paged array of pets"
-                headers: <
-                  additional_properties: <
+                headers: {
+                  additional_properties: {
                     name: "x-next"
-                    value: <
-                      header: <
+                    value: {
+                      header: {
                         description: "A link to the next page of responses"
-                        schema: <
-                          schema: <
+                        schema: {
+                          schema: {
                             type: "string"
-                          >
-                        >
-                      >
-                    >
-                  >
-                >
-                content: <
-                  additional_properties: <
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                content: {
+                  additional_properties: {
                     name: "application/json"
-                    value: <
-                      schema: <
-                        reference: <
+                    value: {
+                      schema: {
+                        reference: {
                           _ref: "#/components/schemas/Pets"
-                        >
-                      >
-                    >
-                  >
-                >
-              >
-            >
-          >
-        >
-      >
-      post: <
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      post: {
         tags: "pets"
         summary: "Create a pet"
         operation_id: "createPets"
-        responses: <
-          default: <
-            response: <
+        responses: {
+          default: {
+            response: {
               description: "unexpected error"
-              content: <
-                additional_properties: <
+              content: {
+                additional_properties: {
                   name: "application/json"
-                  value: <
-                    schema: <
-                      reference: <
+                  value: {
+                    schema: {
+                      reference: {
                         _ref: "#/components/schemas/Error"
-                      >
-                    >
-                  >
-                >
-              >
-            >
-          >
-          response_or_reference: <
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          response_or_reference: {
             name: "201"
-            value: <
-              response: <
+            value: {
+              response: {
                 description: "Null response"
-              >
-            >
-          >
-        >
-      >
-    >
-  >
-  path: <
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  path: {
     name: "/pets/{petId}"
-    value: <
-      get: <
+    value: {
+      get: {
         tags: "pets"
         summary: "Info for a specific pet"
         operation_id: "showPetById"
-        parameters: <
-          parameter: <
+        parameters: {
+          parameter: {
             name: "petId"
             in: "path"
             description: "The id of the pet to retrieve"
             required: true
-            schema: <
-              schema: <
+            schema: {
+              schema: {
                 type: "string"
-              >
-            >
-          >
-        >
-        responses: <
-          default: <
-            response: <
+              }
+            }
+          }
+        }
+        responses: {
+          default: {
+            response: {
               description: "unexpected error"
-              content: <
-                additional_properties: <
+              content: {
+                additional_properties: {
                   name: "application/json"
-                  value: <
-                    schema: <
-                      reference: <
+                  value: {
+                    schema: {
+                      reference: {
                         _ref: "#/components/schemas/Error"
-                      >
-                    >
-                  >
-                >
-              >
-            >
-          >
-          response_or_reference: <
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          response_or_reference: {
             name: "200"
-            value: <
-              response: <
+            value: {
+              response: {
                 description: "Expected response to a valid request"
-                content: <
-                  additional_properties: <
+                content: {
+                  additional_properties: {
                     name: "application/json"
-                    value: <
-                      schema: <
-                        reference: <
+                    value: {
+                      schema: {
+                        reference: {
                           _ref: "#/components/schemas/Pets"
-                        >
-                      >
-                    >
-                  >
-                >
-              >
-            >
-          >
-        >
-      >
-    >
-  >
->
-components: <
-  schemas: <
-    additional_properties: <
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+components: {
+  schemas: {
+    additional_properties: {
       name: "Pet"
-      value: <
-        schema: <
+      value: {
+        schema: {
           required: "id"
           required: "name"
-          properties: <
-            additional_properties: <
+          properties: {
+            additional_properties: {
               name: "id"
-              value: <
-                schema: <
+              value: {
+                schema: {
                   type: "integer"
                   format: "int64"
-                >
-              >
-            >
-            additional_properties: <
+                }
+              }
+            }
+            additional_properties: {
               name: "name"
-              value: <
-                schema: <
+              value: {
+                schema: {
                   type: "string"
-                >
-              >
-            >
-            additional_properties: <
+                }
+              }
+            }
+            additional_properties: {
               name: "tag"
-              value: <
-                schema: <
+              value: {
+                schema: {
                   type: "string"
-                >
-              >
-            >
-          >
-        >
-      >
-    >
-    additional_properties: <
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    additional_properties: {
       name: "Pets"
-      value: <
-        schema: <
+      value: {
+        schema: {
           type: "array"
-          items: <
-            schema_or_reference: <
-              reference: <
+          items: {
+            schema_or_reference: {
+              reference: {
                 _ref: "#/components/schemas/Pet"
-              >
-            >
-          >
-        >
-      >
-    >
-    additional_properties: <
+              }
+            }
+          }
+        }
+      }
+    }
+    additional_properties: {
       name: "Error"
-      value: <
-        schema: <
+      value: {
+        schema: {
           required: "code"
           required: "message"
-          properties: <
-            additional_properties: <
+          properties: {
+            additional_properties: {
               name: "code"
-              value: <
-                schema: <
+              value: {
+                schema: {
                   type: "integer"
                   format: "int32"
-                >
-              >
-            >
-            additional_properties: <
+                }
+              }
+            }
+            additional_properties: {
               name: "message"
-              value: <
-                schema: <
+              value: {
+                schema: {
                   type: "string"
-                >
-              >
-            >
-          >
-        >
-      >
-    >
-  >
->
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -43,9 +43,10 @@ func TestExtensionHandlerWithLibraryExample(t *testing.T) {
 		t.FailNow()
 	}
 	//_ = ioutil.WriteFile(outputFile, output, 0644)
-	err = exec.Command("diff", outputFile, referenceFile).Run()
+	cmd := exec.Command("diff", outputFile, referenceFile)
+	output, err := cmd.CombinedOutput()
 	if err != nil {
-		t.Logf("Diff failed: %+v", err)
+		t.Logf("Diff %s vs %s failed: %s, %+v", outputFile, referenceFile, string(output), err)
 		t.FailNow()
 	} else {
 		// if the test succeeded, clean up

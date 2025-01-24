@@ -22,6 +22,7 @@ import (
 
 	"github.com/google/gnostic/cmd/protoc-gen-openapi/generator"
 	"google.golang.org/protobuf/compiler/protogen"
+	"google.golang.org/protobuf/types/descriptorpb"
 	"google.golang.org/protobuf/types/pluginpb"
 )
 
@@ -46,7 +47,10 @@ func main() {
 
 	opts.Run(func(plugin *protogen.Plugin) error {
 		// Enable "optional" keyword in front of type (e.g. optional string label = 1;)
-		plugin.SupportedFeatures = uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL)
+		// Enable "supports_editions" to support proto editions
+		plugin.SupportedEditionsMinimum = descriptorpb.Edition_EDITION_2023
+		plugin.SupportedEditionsMaximum = descriptorpb.Edition_EDITION_2024
+		plugin.SupportedFeatures = uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL) | uint64(pluginpb.CodeGeneratorResponse_FEATURE_SUPPORTS_EDITIONS)
 		if *conf.OutputMode == "source_relative" {
 			for _, file := range plugin.Files {
 				if !file.Generate {

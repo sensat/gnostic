@@ -3,13 +3,13 @@
 
 openapi: 3.0.3
 info:
-    title: Messaging API
+    title: tests.mapfields.message.v1.Messaging API
     version: 0.0.1
 paths:
     /v1/messages/{messageId}:
         patch:
             tags:
-                - Messaging
+                - tests.mapfields.message.v1.Messaging
             operationId: Messaging_UpdateMessage
             parameters:
                 - name: messageId
@@ -110,4 +110,4 @@ components:
                 label:
                     type: string
 tags:
-    - name: Messaging
+    - name: tests.mapfields.message.v1.Messaging

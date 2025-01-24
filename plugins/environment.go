@@ -11,8 +11,8 @@ import (
 	"path"
 	"strings"
 
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/ptypes/any"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/known/anypb"
 
 	discovery "github.com/google/gnostic/discovery"
 	openapiv2 "github.com/google/gnostic/openapiv2"
@@ -200,7 +200,7 @@ func HandleResponse(response *Response, outputLocation string) error {
 
 func (request *Request) AddModel(modelType string, model proto.Message) error {
 	modelBytes, err := proto.Marshal(model)
-	request.Models = append(request.Models, &any.Any{TypeUrl: modelType, Value: modelBytes})
+	request.Models = append(request.Models, &anypb.Any{TypeUrl: modelType, Value: modelBytes})
 	return err
 }
 
