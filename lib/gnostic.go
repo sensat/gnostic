@@ -28,9 +28,8 @@ import (
 	"strings"
 	"time"
 
+	"go.yaml.in/yaml/v3"
 	"google.golang.org/protobuf/encoding/prototext"
-	"google.golang.org/protobuf/proto"
-	"gopkg.in/yaml.v3"
 
 	"github.com/google/gnostic/compiler"
 	discovery_v1 "github.com/google/gnostic/discovery"
@@ -39,6 +38,7 @@ import (
 	openapi_v3 "github.com/google/gnostic/openapiv3"
 	plugins "github.com/google/gnostic/plugins"
 	surface "github.com/google/gnostic/surface"
+	"google.golang.org/protobuf/proto"
 )
 
 // UsageError is a response to invalid command-line inputs
@@ -242,9 +242,11 @@ func isURL(path string) bool {
 
 // Write bytes to a named file.
 // Certain names have special meaning:
-//   ! writes nothing
-//   - writes to stdout
-//   = writes to stderr
+//
+//	! writes nothing
+//	- writes to stdout
+//	= writes to stderr
+//
 // If a directory name is given, the file is written there with
 // a name derived from the source and extension arguments.
 func writeFile(name string, bytes []byte, source string, extension string) {
@@ -392,7 +394,7 @@ func (g *Gnostic) readOptions() error {
 		} else if len(arg) > 2 && arg[0] == '-' && arg[1] == '-' {
 			// try letting the option specify a plugin with no output files (or unwanted output files)
 			// this is useful for calling plugins like linters that only return messages
-			p := &pluginCall{Name: arg[2:len(arg)], Invocation: "!"}
+			p := &pluginCall{Name: arg[2:], Invocation: "!"}
 			g.pluginCalls = append(g.pluginCalls, p)
 		} else if arg[0] == '-' {
 			return NewUsageError(fmt.Sprintf("unknown option: %s", arg))
@@ -441,21 +443,22 @@ func (g *Gnostic) readOpenAPIText(bytes []byte) (message proto.Message, err erro
 		return nil, errors.New("unable to identify OpenAPI version")
 	}
 	// Compile to the proto model.
-	if g.sourceFormat == SourceFormatOpenAPI2 {
+	switch g.sourceFormat {
+	case SourceFormatOpenAPI2:
 		root := info.Content[0]
 		document, err := openapi_v2.NewDocument(root, compiler.NewContextWithExtensions("$root", root, nil, &g.extensionHandlers))
 		if err != nil {
 			return nil, err
 		}
 		message = document
-	} else if g.sourceFormat == SourceFormatOpenAPI3 {
+	case SourceFormatOpenAPI3:
 		root := info.Content[0]
 		document, err := openapi_v3.NewDocument(root, compiler.NewContextWithExtensions("$root", root, nil, &g.extensionHandlers))
 		if err != nil {
 			return nil, err
 		}
 		message = document
-	} else {
+	default:
 		root := info.Content[0]
 		document, err := discovery_v1.NewDocument(root, compiler.NewContextWithExtensions("$root", root, nil, &g.extensionHandlers))
 		if err != nil {
@@ -517,13 +520,14 @@ func (g *Gnostic) writeTextOutput(message proto.Message) {
 func (g *Gnostic) writeJSONYAMLOutput(message proto.Message) {
 	// Convert the OpenAPI document into an exportable MapSlice.
 	var rawInfo *yaml.Node
-	if g.sourceFormat == SourceFormatOpenAPI2 {
+	switch g.sourceFormat {
+	case SourceFormatOpenAPI2:
 		document := message.(*openapi_v2.Document)
 		rawInfo = document.ToRawInfo()
-	} else if g.sourceFormat == SourceFormatOpenAPI3 {
+	case SourceFormatOpenAPI3:
 		document := message.(*openapi_v3.Document)
 		rawInfo = document.ToRawInfo()
-	} else if g.sourceFormat == SourceFormatDiscovery {
+	case SourceFormatDiscovery:
 		document := message.(*discovery_v1.Document)
 		rawInfo = document.ToRawInfo()
 	}
@@ -579,10 +583,11 @@ func (g *Gnostic) writeMessagesOutput(message proto.Message) error {
 func (g *Gnostic) performActions(message proto.Message) (err error) {
 	// Optionally resolve internal references.
 	if g.resolveReferences {
-		if g.sourceFormat == SourceFormatOpenAPI2 {
+		switch g.sourceFormat {
+		case SourceFormatOpenAPI2:
 			document := message.(*openapi_v2.Document)
 			_, err = document.ResolveReferences(g.sourceName)
-		} else if g.sourceFormat == SourceFormatOpenAPI3 {
+		case SourceFormatOpenAPI3:
 			document := message.(*openapi_v3.Document)
 			_, err = document.ResolveReferences(g.sourceName)
 		}
@@ -661,21 +666,22 @@ func (g *Gnostic) Main() error {
 	}
 	extension := strings.ToLower(filepath.Ext(g.sourceName))
 	var message proto.Message
-	if extension == ".json" || extension == ".yaml" {
+	switch extension {
+	case ".json", ".yaml":
 		// Try to read the source as JSON/YAML.
 		message, err = g.readOpenAPIText(bytes)
 		if err != nil {
 			writeFile(g.errorOutputPath, g.errorBytes(err), g.sourceName, "errors")
 			return err
 		}
-	} else if extension == ".pb" {
+	case ".pb":
 		// Try to read the source as a binary protocol buffer.
 		message, err = g.readOpenAPIBinary(bytes)
 		if err != nil {
 			writeFile(g.errorOutputPath, g.errorBytes(err), g.sourceName, "errors")
 			return err
 		}
-	} else {
+	default:
 		err = errors.New("unknown file extension. 'json', 'yaml', and 'pb' are accepted")
 		writeFile(g.errorOutputPath, g.errorBytes(err), g.sourceName, "errors")
 		return err
